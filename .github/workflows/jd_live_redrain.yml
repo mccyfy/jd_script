@@ -6,11 +6,11 @@ name: jd_live_redrain
 on:
   workflow_dispatch:
   schedule:
-    - cron: '59 * * * *'
+    - cron: '0 1,3,5,7,9,11,12,13,15,16 * * *'
   watch:
     types: started
   repository_dispatch:
-    types: jd_live_redrain
+    types: live_redrain
 jobs:
   build:
 
@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: Checkout
         run: |
-          git clone https://github.com/269569205/jd_scripts.git ~/scripts
+          git clone https://github.com/libinxwz/jd_scripts.git ~/scripts
       - name: Use Node.js 10.x
         uses: actions/setup-node@v1
         with:
@@ -28,14 +28,13 @@ jobs:
         run: |
           cd ~/scripts
           npm install
-      - name: '运行 【红包雨】'
+      - name: '运行 【直播红包雨】'
         run: |
           cd ~/scripts
           node jd_live_redrain.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
-          JD_BEAN_STOP: ${{secrets.JD_BEAN_STOP}} #自定义延迟签到,单位毫秒. 默认分批并发无延迟. 延迟作用于每个签到接口, 如填入延迟则切换顺序签到(耗时较长)
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
