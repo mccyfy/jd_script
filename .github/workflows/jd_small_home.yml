@@ -6,11 +6,11 @@ name: jd_small_home
 on:
   workflow_dispatch:
   schedule:
-    - cron: '16 0 * * *'
+    - cron: '30 23,4,10 * * *'
   watch:
-    types: [started]
+    types: started
   repository_dispatch:
-    types: jd_small_home
+    types: small_home
 jobs:
   build:
 
@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: Checkout
         run: |
-          git clone https://github.com/269569205/jd_scripts.git ~/scripts
+          git clone https://github.com/libinxwz/jd_scripts.git ~/scripts
       - name: Use Node.js 10.x
         uses: actions/setup-node@v1
         with:
@@ -35,7 +35,6 @@ jobs:
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
-          JOY_FEED_COUNT: ${{ secrets.JOY_FEED_COUNT }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
           BARK_SOUND: ${{ secrets.BARK_SOUND }}
@@ -44,3 +43,4 @@ jobs:
           DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
           IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
+          JD_818_SHAREID_NOTIFY: ${{ secrets.JD_818_SHAREID_NOTIFY }}

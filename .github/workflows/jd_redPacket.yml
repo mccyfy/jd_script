@@ -6,7 +6,7 @@ name: jd_redPacket
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 17 * * *'
+    - cron: '1 16 * * *'
   watch:
     types: started
   repository_dispatch:
@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: Checkout
         run: |
-          git clone https://github.com/269569205/jd_scripts.git ~/scripts
+          git clone https://github.com/libinxwz/jd_scripts.git ~/scripts
       - name: Use Node.js 10.x
         uses: actions/setup-node@v1
         with:

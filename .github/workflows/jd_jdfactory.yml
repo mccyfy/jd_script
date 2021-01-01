@@ -6,11 +6,11 @@ name: jd_jdfactory
 on:
   workflow_dispatch:
   schedule:
-    - cron: '10 * * * *'
+    - cron: '* */1 * * *'
   watch:
-    types: started
+    types: [started]
   repository_dispatch:
-    types: jd_jdfactory
+    types: jdfactory
 jobs:
   build:
 
@@ -19,9 +19,7 @@ jobs:
     steps:
       - name: Checkout
         run: |
-          git clone -b  master https://github.com/269569205/jd_scripts.git ~/scripts
-          cd ~/scripts
-          ls -l
+          git clone https://github.com/libinxwz/jd_scripts.git ~/scripts
       - name: Use Node.js 10.x
         uses: actions/setup-node@v1
         with:
@@ -30,16 +28,14 @@ jobs:
         run: |
           cd ~/scripts
           npm install
-      - name: '运行 【京东工厂】'
+      - name: '运行 【东东工厂】'
         run: |
           cd ~/scripts
-          ls -l
           node jd_jdfactory.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
           JOY_FEED_COUNT: ${{ secrets.JOY_FEED_COUNT }}
-          JOY_RUN_FLAG: ${{ secrets.JOY_RUN_FLAG }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
           BARK_SOUND: ${{ secrets.BARK_SOUND }}

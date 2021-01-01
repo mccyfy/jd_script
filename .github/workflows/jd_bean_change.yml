@@ -6,13 +6,11 @@ name: jd_bean_change
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 0,20 * * *'
+    - cron: '0 2 * * *'
   watch:
     types: started
   repository_dispatch:
     types: bean_change
-env:
-  TZ: Asia/Shanghai
 jobs:
   build:
 
@@ -21,7 +19,7 @@ jobs:
     steps:
       - name: Checkout
         run: |
-          git clone https://github.com/269569205/jd_scripts.git ~/scripts
+          git clone https://github.com/libinxwz/jd_scripts.git ~/scripts
       - name: Use Node.js 10.x
         uses: actions/setup-node@v1
         with:
@@ -33,9 +31,7 @@ jobs:
       - name: '运行 【京豆变动通知】'
         run: |
           cd ~/scripts
-          node jd_necklace.js
           node jd_bean_change.js
-          node jd_syj.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
