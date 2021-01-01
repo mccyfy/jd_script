@@ -60,7 +60,7 @@ async function execSign() {
     } else {
       // 如果没有提供通知推送，则打印日志
       console.log('没有提供通知推送，则打印脚本执行日志')
-      await exec(`${process.execPath} ${JD_DailyBonusPath}`, { stdio: "inherit" });
+      await exec(`node JD_DailyBonus.js`, { stdio: "inherit" });
     }
     // await exec("node JD_DailyBonus.js", { stdio: "inherit" });
     // console.log('执行完毕', new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleDateString())
