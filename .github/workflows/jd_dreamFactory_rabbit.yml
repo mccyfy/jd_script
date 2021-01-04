@@ -1,16 +1,16 @@
 # This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: jd_dreamFactory_ele
+name: jd_dreamFactory_rabbit
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '5,15,25,35,45,55 0-23 * * *'
+    - cron: '50 0-23 * * *'
   watch:
     types: [started]
   repository_dispatch:
-    types: dreamFactory_ele
+    types: dreamFactory_rabbit
 jobs:
   build:
 
@@ -28,10 +28,10 @@ jobs:
         run: |
           cd ~/scripts
           npm install
-      - name: '运行 【惊喜工厂机器电力挂机】'
+      - name: '运行 【惊喜工厂清理垃圾挂机】'
         run: |
           cd ~/scripts
-          node jd_dreamFactory_ele.js
+          node jd_dreamFactory_rabbit.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
