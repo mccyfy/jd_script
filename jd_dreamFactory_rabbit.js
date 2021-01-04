@@ -95,10 +95,10 @@ if ($.isNode()) {
 async function jdDreamFactory() {
   await userInfo();
   if (!$.unActive) return
-  await getUserElectricity();//发电机电量
-  //await PickUp();//收取自家的地下零件
-  //await stealFriend();
-  //await taskList();
+  //await getUserElectricity();//发电机电量
+  await PickUp();//收取自家的地下零件
+  await stealFriend();
+  await taskList();
 }
 
 
