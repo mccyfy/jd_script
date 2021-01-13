@@ -85,7 +85,7 @@ let myList=[];
     }
   }
   if (helpAuthor){
-	  myList=["367743&rPKHL8RDC0lGwji0Awq0AQ=="];
+	  myList=["367909&rPKHL8RDC0lGwji0Awq0AQ=="];
   }
   console.log("您的开团信息:"+myList);
   for (let i = 0; i < cookiesArr.length; i++) {
