@@ -77,10 +77,6 @@ let myList=[];
         }
         continue
       }
-	  //console.log("登录信息正确");
-      //await shareCodesFormat()
-      //await jdWish()
-	  //start()
 	  //await start();
     }
   }
